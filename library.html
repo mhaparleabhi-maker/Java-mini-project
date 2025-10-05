@@ -3,44 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Library</title>
+    <title>Online Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="title-wrap">
-                <h1>Your Library</h1>
-                <p class="subtitle">Browse and manage your saved books</p>
+                <h1>Add a Book</h1>
+                <p class="subtitle">Upload a PDF and an optional cover image</p>
             </div>
             <div class="meta">
-                <a href="index.html" class="count-badge" style="text-decoration:none;">Add Book →</a>
+                <a href="login.html" class="count-badge" style="text-decoration:none;">Login</a>
+                <a href="register.html" class="count-badge" style="text-decoration:none;">Register</a>
+                <a href="about.html" class="count-badge" style="text-decoration:none;">About Us</a>
+                <a href="my-library.html" class="count-badge" style="text-decoration:none;">My Library →</a>
             </div>
         </header>
+        <form id="book-form">
+            <input type="text" id="title" placeholder="Book title" required>
+            <input type="text" id="author" placeholder="Author" required>
+            <input type="file" id="pdf" accept="application/pdf" required>
+            <button type="submit">Add Book</button>
+        </form>
 
-        <div class="meta" style="margin-bottom:8px;">
-            <span class="count-badge"><span id="book-count">0</span> books</span>
-        </div>
-
-        <div id="book-list"></div>
-        <div id="empty-state" class="empty-state" hidden>
-            <div class="emoji">📚</div>
-            <h2>No books yet</h2>
-            <p>Your library is empty. Add a book to get started.</p>
-        </div>
+        
     </div>
 
     <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
 
-    <script src="script.js"></script>
     <script>
-        // Ensure UI state updates when landing directly on this page
-        document.addEventListener('DOMContentLoaded', function(){
-            if (typeof updateUIState === 'function') updateUIState();
-        });
+        // Require login before accessing add-book page
+        (function(){
+            try {
+                const user = JSON.parse(localStorage.getItem('loggedInUser'));
+                if (!user) {
+                    window.location.href = 'login.html';
+                }
+            } catch (e) {
+                window.location.href = 'login.html';
+            }
+        })();
     </script>
+    <script src="script.js"></script>
 </body>
-<script>
-</script>
 </html>
-
