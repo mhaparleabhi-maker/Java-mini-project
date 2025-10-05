@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title-wrap">
+                <h1>About Us</h1>
+                <p class="subtitle">We’re the team behind this online library</p>
+            </div>
+            <div class="meta">
+                <a href="index.html" class="count-badge" style="text-decoration:none;">Home</a>
+                <a href="my-library.html" class="count-badge" style="text-decoration:none;">My Library</a>
+            </div>
+        </header>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Abhi Mhaparle</h3>
+                <p>Phone: +91 98765 43210</p>
+                <p>Email: abhi.mhaparle123@example.com</p>
+            </div>
+            <div class="about-card">
+                <h3>Omkar Kute</h3>
+                <p>Phone: +91 91234 56780</p>
+                <p>Email: omkar.kute987@example.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Require login for About page as well
+        (function(){
+            try {
+                const user = JSON.parse(localStorage.getItem('loggedInUser'));
+                if (!user) {
+                    window.location.href = 'login.html';
+                }
+            } catch (e) {
+                window.location.href = 'login.html';
+            }
+        })();
+    </script>
+</body>
+</html>
+

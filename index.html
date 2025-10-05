@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title-wrap">
+                <h1>Add a Book</h1>
+                <p class="subtitle">Upload a PDF and an optional cover image</p>
+            </div>
+            <div class="meta">
+                <a href="login.html" class="count-badge" style="text-decoration:none;">Login</a>
+                <a href="register.html" class="count-badge" style="text-decoration:none;">Register</a>
+                <a href="about.html" class="count-badge" style="text-decoration:none;">About Us</a>
+                <a href="my-library.html" class="count-badge" style="text-decoration:none;">My Library →</a>
+            </div>
+        </header>
+        <form id="book-form">
+            <input type="text" id="title" placeholder="Book title" required>
+            <input type="text" id="author" placeholder="Author" required>
+            <input type="file" id="pdf" accept="application/pdf" required>
+            <button type="submit">Add Book</button>
+        </form>
+
+        
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+    <script>
+        // Require login before accessing add-book page
+        (function(){
+            try {
+                const user = JSON.parse(localStorage.getItem('loggedInUser'));
+                if (!user) {
+                    window.location.href = 'login.html';
+                }
+            } catch (e) {
+                window.location.href = 'login.html';
+            }
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

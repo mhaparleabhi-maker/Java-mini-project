@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title-wrap">
+                <h1>Your Library</h1>
+                <p class="subtitle">Browse and manage your saved books</p>
+            </div>
+            <div class="meta">
+                <a href="index.html" class="count-badge" style="text-decoration:none;">Add Book →</a>
+            </div>
+        </header>
+
+        <div class="meta" style="margin-bottom:8px;">
+            <span class="count-badge"><span id="book-count">0</span> books</span>
+        </div>
+
+        <div id="book-list"></div>
+        <div id="empty-state" class="empty-state" hidden>
+            <div class="emoji">📚</div>
+            <h2>No books yet</h2>
+            <p>Your library is empty. Add a book to get started.</p>
+        </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Ensure UI state updates when landing directly on this page
+        document.addEventListener('DOMContentLoaded', function(){
+            if (typeof updateUIState === 'function') updateUIState();
+        });
+    </script>
+</body>
+<script>
+</script>
+</html>
+
